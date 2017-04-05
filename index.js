@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 
-app.get('/', function(req, res) {
+app.post('/', function(req, res) {
     var messageBody = ""
     for (var k in req.body) {
         if (typeof req.body[k] !== 'function') {
@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
         function(err, result) {
             if (err) {
                 console.log(err);
-                res.send(401, 'Erro no envio do e-mail');
+                res.send(400, 'Erro no envio do e-mail');
 
             } else {
                 res.send(200, 'E-mail enviado com sucesso');
