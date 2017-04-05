@@ -1,0 +1,23 @@
+{
+  "name": "sendmail",
+  "version": "1.0.0",
+  "description": "Send e-mails with Node.JS Edit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inventacomvc/sendmail.git"
+  },
+  "author": "Paulo Rocha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inventacomvc/sendmail/issues"
+  },
+  "homepage": "https://github.com/inventacomvc/sendmail#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mailer": "^0.6.7"
+  }
+}
