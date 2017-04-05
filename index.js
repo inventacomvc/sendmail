@@ -1,14 +1,19 @@
-var email = require('mailer');
-var express = require('express');
+var email = require('mailer'),
+    express = require('express'),
+    bodyParser = require('body-parser');
+
 var app = express();
 
+// Request body parsing middleware should be above methodOverride
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.post('/', function(req, res) {
-    var messageBody = ""
+    var messageBody = "";
     for (var k in req.body) {
-        if (typeof req.body[k] !== 'function') {
-            messageBody += k + ": " + req.body[k] + '\n \n';
-        }
+        messageBody += k + ": " + req.body[k] + '\n \n';
     }
 
     var to = req.body && req.body.to ? req.body.to : "paulochrocha@gmail.com";
