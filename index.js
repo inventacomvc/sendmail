@@ -4,6 +4,11 @@ var email = require('mailer'),
 
 var app = express();
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // Request body parsing middleware should be above methodOverride
 app.use(bodyParser.urlencoded({
     extended: true
