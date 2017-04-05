@@ -6,8 +6,8 @@ var app = express();
 app.get('/', function(req, res) {
     var messageBody = ""
     for (var k in req.body) {
-        if (typeof target[k] !== 'function') {
-            messageBody += k + ": " + target[k] + '\n \n';
+        if (typeof req.body[k] !== 'function') {
+            messageBody += k + ": " + req.body[k] + '\n \n';
         }
     }
 
