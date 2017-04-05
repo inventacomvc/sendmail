@@ -36,10 +36,12 @@ app.post('/', function(req, res) {
         function(err, result) {
             if (err) {
                 console.log(err);
-                res.send(400, 'Erro no envio do e-mail');
-
+                res.json(400, {
+                                error: 1,
+                                message: "Erro no envio do e-mail"
+                            });
             } else {
-                res.send(200, 'E-mail enviado com sucesso');
+                res.json({message: "E-mail enviado com sucesso!"});
             }
         });
 });
