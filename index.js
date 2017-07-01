@@ -23,7 +23,7 @@ app.post('/', function(req, res) {
 
     var to = req.body && req.body.to ? req.body.to : "paulochrocha@gmail.com";
     var from = req.body && req.body.from ? req.body.from : "paulochrocha@gmail.com";
-    var subject = req.body && req.body.subject ? req.body.subject : "Test email";
+    var subject = req.query.subject ? req.query.subject : null;
 
     email.send({
             host: process.env.MAIL_SERVER || "localhost", // smtp server hostname
@@ -32,7 +32,7 @@ app.post('/', function(req, res) {
             domain: process.env.MAIL_DOMAIN || "localhost", // domain used by client to identify itself to server
             to: process.env.MAIL_TO || to,
             from: process.env.MAIL_FROM || from,
-            subject: process.env.MAIL_SUBJECT || subject,
+            subject: subject !== null ? subject : process.env.MAIL_SUBJECT,
             body: messageBody,
             authentication: process.env.MAIL_AUTH || "login", // auth login is supported; anything else is no auth
             username: process.env.MAIL_USERNAME || "username",
